@@ -1,0 +1,55 @@
+{% extends 'commons/base.html' %}
+{% block title %}Login{% endblock %}
+{% block styles %}
+<style>
+    body {
+        background-color: #F4DFC8;  
+        color: #000000;
+    }
+    .login-container {
+        max-width: 400px;
+        margin: auto;
+        margin-top: 100px;
+    }
+    .login-form {
+        background-color: #F4EAE0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+        color: #000000;
+    }
+    .btn-primary {
+        background-color: #000000;
+        border-color: #000000;
+    }
+    .btn-primary:hover {
+        background-color: #000000;
+        border-color: #000000;
+    }
+</style>
+{% endblock%}
+
+{% block content %}
+<div class="container login-container">
+    <div class="login-form">
+        <h2 class="mb-4">Iniciar Sesión</h2>
+        <form>
+            <div class="mb-3">
+                <label for="usuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" required>
+            </div>
+            <div class="mb-3">
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
