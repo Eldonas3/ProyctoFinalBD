@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Create Cliente{% endblock %}
+
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <form>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno" required>
+            </div>
+            <div class="mb-3">
+                <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" required>
+            </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <textarea class="form-control" id="direccion" name="direccion" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" name="edad" required>
+            </div>
+            <div class="mb-3">
+                <label for="sexo" class="form-label">Sexo</label>
+                <select class="form-select" id="sexo" name="sexo" required>
+                    <option value="M">M</option>
+                    <option value="H">H</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto</label>
+                <input type="file" class="form-control" id="foto" name="foto">
+            </div>
+            <div class="mb-3">
+                <label for="perfil" class="form-label">Perfil</label>
+                <select class="form-select" id="perfil" name="perfil" required>
+                    {% for perfil in perfiles %}
+                    <option value="{{perfil.id_perfil}}">{{perfil.perfil}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Send Info</button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

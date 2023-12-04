@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Read Empleado{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID Empleado</th>
+                    <th scope="col">nombre_empleado</th>
+                    <th scope="col">apellido_materno</th>
+                    <th scope="col">apellido_paterno</th>
+                    <th scope="col">telefono</th>
+                    <th scope="col">direccion</th>
+                    <th scope="col">correo_electronico</th>
+                    <th scope="col">RFC</th>
+                    <th scope="col">Cuenta</th>
+                    <th scope="col">edad</th>
+                    <th scope="col">sexo</th>
+                    <th scope="col">perfil</th>
+                    <th scope="col">nombre_usuario</th>
+                    <th scope="col">contrasena</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados%}
+                <tr>
+                    <th scope="row">{{empleado.id_empleado}}</th>
+                    <td>{{empleado.nombre_empleado}}</td>
+                    <td>{{empleado.apellido_materno}}</td>
+                    <td>{{empleado.apellido_paterno}}</td>
+                    <td>{{empleado.telefono}}</td>
+                    <td>{{empleado.direccion}}</td>
+                    <td>{{empleado.correo_electronico}}</td>
+                    <td>{{empleado.rfc}}</td>
+                    <td>{{empleado.cuenta_bancaria}}</td>
+                    <td>{{empleado.edad}}</td>
+                    <td>{{empleado.sexo}}</td>
+                    <td>{{empleado.perfil}}</td>
+                    <td>{{empleado.nombre_usuario}}</td>
+                    <td>{{empleado.contrasena}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

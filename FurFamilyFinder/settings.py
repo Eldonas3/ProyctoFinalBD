@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ejemplo',
     'login',
     'Inicio',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
