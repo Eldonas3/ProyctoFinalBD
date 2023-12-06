@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Read Mascota{% endblock %}
+{% block title %}Delete Mascota{% endblock %}
 {%block content%}
 <div class="container mt-5">
     <div class="d-flex justify-content-center">
@@ -14,6 +14,7 @@
                     <th scope="col">sexo</th>
                     <th scope="col">descripcion</th>
                     <th scope="col">raza</th>
+                    <th scope="col">¿Delete?</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,11 @@
                     <td>{{mascota.sexo}}</td>
                     <td>{{mascota.descripcion}}</td>
                     <td>{{mascota.raza}}</td>
+                    <td>
+                        <a href="{% url 'delete_mascota' mascota.id_mascota %}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
                 </tr>
                 {%endfor%}
             </tbody>

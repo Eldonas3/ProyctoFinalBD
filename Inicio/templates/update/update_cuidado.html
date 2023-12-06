@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Cuidado{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_cuidado</th>
+                    <th scope="col">dieta</th>
+                    <th scope="col">raza</th>
+                    <th scope="col">cuidados</th>
+                    <th scope="col">¿Update?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cuidado in cuidados%}
+                <tr>
+                    <th scope="row">{{cuidado.id_cuidado}}</th>
+                    <td>{{cuidado.dieta}}</td>
+                    <td>{{cuidado.raza}}</td>
+                    <td>{{cuidado.cuidados}}</td>
+                    <td>
+                        <a href="{% url 'update_cuidado' cuidado.id_cuidado %}">
+                            <button type="button" class="btn btn-info">Update</button>
+                        </a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

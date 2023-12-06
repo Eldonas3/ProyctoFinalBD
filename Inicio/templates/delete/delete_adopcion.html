@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Adopcion{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID Adopción</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Empleado</th>
+                    <th scope="col">Mascota</th>
+                    <th scope="col">Fecha de Adopción</th>
+                    <th scope="col">Status de Adopción</th>
+                    <th scope="col">¿Delete?</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for adopcion in adopciones %}
+                <tr>
+                    <th scope="row">{{adopcion.id_adopcion}}</th>
+                    <td>{{adopcion.cliente}}</td>
+                    <td>{{adopcion.empleado}}</td>
+                    <td>{{adopcion.mascota}}</td>
+                    <td>{{adopcion.fecha_adopcion}}</td>
+                    {% if adopcion.status_adopcion == 1 %}
+                    <td>Adoptado</td>
+                    {% else %}
+                    <td>En proceso</td>
+                    {% endif %}
+                    <td>
+                        <a href="{% url 'delete_adopcion' adopcion.id_adopcion %}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>           
+                </tr>
+             {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

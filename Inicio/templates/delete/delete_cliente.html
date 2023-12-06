@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Cliente{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID Cliente</th>
+                    <th scope="col">nombre_cliente</th>
+                    <th scope="col">apellido_materno</th>
+                    <th scope="col">apellido_paterno</th>
+                    <th scope="col">telefono</th>
+                    <th scope="col">direccion</th>
+                    <th scope="col">correo_electronico</th>
+                    <th scope="col">edad</th>
+                    <th scope="col">sexo</th>
+                    <th scope="col">perfil</th>
+                    <th scope="col">nombre_usuario</th>
+                    <th scope="col">contrasena</th>
+                    <th scope="col">¿Delete?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes%}
+                <tr>
+                    <th scope="row">{{cliente.id_cliente}}</th>
+                    <td>{{cliente.nombre_cliente}}</td>
+                    <td>{{cliente.apellido_materno}}</td>
+                    <td>{{cliente.apellido_paterno}}</td>
+                    <td>{{cliente.telefono}}</td>
+                    <td>{{cliente.direccion}}</td>
+                    <td>{{cliente.correo_electronico}}</td>
+                    <td>{{cliente.edad}}</td>
+                    <td>{{cliente.sexo}}</td>
+                    <td>{{cliente.perfil}}</td>
+                    <td>{{cliente.nombre_usuario}}</td>
+                    <td>{{cliente.contrasena}}</td>
+                    <td>
+                        <a href="{% url 'delete_cliente' cliente.id_cliente %}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Perfiles{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_perfil</th>
+                    <th scope="col">perfil</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">status</th>
+                    <th scope="col">¿Delete?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for perfil in perfiles %}
+                <tr>
+                    <th scope="row">{{perfil.id_perfil}}</th>
+                    <td>{{perfil.perfil}}</td>
+                    <td>{{perfil.descripcion}}</td>
+                    {% if perfil.status == 1 %}
+                    <td>Activo</td>
+                    {%else%}
+                    <td>Inactivo</td>
+                    {%endif%}
+                    <td>
+                        <a href="{% url 'delete_perfil' perfil.id_perfil %}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

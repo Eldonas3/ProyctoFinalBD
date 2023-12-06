@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Especie{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_especie</th>
+                    <th scope="col">nombre_especie</th>
+                    <th scope="col">¿Update?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for especie in especies%}
+                <tr>
+                    <th scope="row">{{especie.id_especie}}</th>
+                    <td>{{especie.nombre_especie}}</td>
+                    <td>
+                        <a href="{% url 'update_especie' especie.id_especie %}">
+                            <button type="button" class="btn btn-info">Update</button>
+                        </a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

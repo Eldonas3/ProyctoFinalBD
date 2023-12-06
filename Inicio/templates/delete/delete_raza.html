@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Raza{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_raza</th>
+                    <th scope="col">especie</th>
+                    <th scope="col">nombre_raza</th>
+                    <th scope="col">¿Delete?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for raza in razas %}
+                <tr>
+                    <th scope="row">{{raza.id_raza}}</th>
+                    <td>{{raza.especie}}</td>
+                    <td>{{raza.nombre_raza}}</td>
+                    <td>
+                        <a href="{% url 'delete_raza' raza.id_raza %}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

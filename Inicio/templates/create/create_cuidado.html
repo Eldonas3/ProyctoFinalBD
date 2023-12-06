@@ -5,23 +5,21 @@
 {%block content%}
 <div class="container mt-5">
     <div class="d-flex justify-content-center">
-        <form>
+        <form method="post" enctype="multipart/form-data">
+                <!-- Security token -->
+                    {% csrf_token %}
+        {% for campo in formularios %}
             <div class="mb-3">
-                <label for="dieta" class="form-label">Dieta</label>
-                <textarea class="form-control" id="dieta" name="dieta" rows="3" required></textarea>
+                <label for="{{campo.name}}" class="">{{campo.name}}</label>
+                <input type="{{campo.field.widget.input_type}}" 
+                class="form-control"
+                name="{{campo.name}}"  
+                id="{{campo.name}}" aria-describedby="helpId" 
+                placeholder="{{campo.name}}">
             </div>
-            <div class="mb-3">
-                <label for="cuidados" class="form-label">Cuidados</label>
-                <textarea class="form-control" id="cuidados" name="cuidados" rows="3" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="raza" class="form-label">Raza</label>
-                <select class="form-select" id="raza" name="raza" required>
-                    {% for raza in razas%}
-                    <option value="{{raza.id_raza}}">{{raza.nombre_raza}}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            <div class="col-12 help-text">{{campo.errors}}</div>
+        {% endfor %}
+            <!-- Boton -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Send Info</button>
             </div>
