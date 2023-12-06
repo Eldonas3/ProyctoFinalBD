@@ -2,4 +2,28 @@
 {% load static %}
 {% block title %}Read Cuidado{% endblock %}
 {%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_cuidado</th>
+                    <th scope="col">dieta</th>
+                    <th scope="col">raza</th>
+                    <th scope="col">cuidados</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cuidado in cuidados%}
+                <tr>
+                    <th scope="row">{{cuidado.id_cuidado}}</th>
+                    <td>{{cuidado.dieta}}</td>
+                    <td>{{cuidado.raza}}</td>
+                    <td>{{cuidado.cuidados}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
 {%endblock%}

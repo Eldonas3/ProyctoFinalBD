@@ -2,4 +2,25 @@
 {% load static %}
 {% block title %}Read Raza{% endblock %}
 {%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_raza</th>
+                    <th scope="col">especie</th>
+                    <th scope="col">nombre_raza</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for raza in razas %}
+                <tr>
+                    <th scope="row">{{raza.id_raza}}</th>
+                    <td>{{raza.especie}}</td>
+                    <td>{{raza.nombre_raza}}</td>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
 {%endblock%}

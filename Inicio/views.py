@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Perfiles,Empleado,Mascota,Cliente,Raza,Especie,Adopcion
+from .models import Perfiles,Empleado,Mascota,Cliente,Raza,Especie,Adopcion,Cuidado
+from .forms import ClienteForm
 
 # Create your views here.
 def home(request):
@@ -19,7 +20,12 @@ def delete(request):
 
 def create_cliente(request):
     perfiles = Perfiles.objects.all()
-    return render(request,'create/create_cliente.html',{'perfiles':perfiles})
+    # context ={}
+    formularios = ClienteForm(request.POST or None)
+    # if form.is_valid():
+    #     form.save()
+    # context['form'] = form
+    return render(request,'create/create_cliente.html',{'perfiles':perfiles,'formularios':formularios})
 
 def create_empleado(request):
     perfiles = Perfiles.objects.all()
@@ -58,20 +64,25 @@ def read_cliente(request):
     return render(request,'read/read_cliente.html',{'clientes':clientes})
 
 def read_cuidado(request):
-    return render(request,'read/read_cuidado.html')
+    cuidados = Cuidado.objects.all()
+    return render(request,'read/read_cuidado.html',{'cuidados':cuidados})
 
 def read_empleado(request):
     empleados = Empleado.objects.all()
     return render(request,'read/read_empleado.html',{'empleados':empleados})
 
 def read_especie(request):
-    return render(request,'read/read_especie.html')
+    especies = Especie.objects.all()
+    return render(request,'read/read_especie.html',{'especies':especies})
 
 def read_mascota(request):
-    return render(request,'read/read_mascota.html')
+    mascotas = Mascota.objects.all()
+    return render(request,'read/read_mascota.html',{'mascotas':mascotas})
 
 def read_perfiles(request):
-    return render(request,'read/read_perfiles.html')
+    perfiles = Perfiles.objects.all()
+    return render(request,'read/read_perfiles.html',{'perfiles':perfiles})
 
 def read_raza(request):
-    return render(request,'read/read_raza.html')
+    razas = Raza.objects.all()
+    return render(request,'read/read_raza.html',{'razas':razas})

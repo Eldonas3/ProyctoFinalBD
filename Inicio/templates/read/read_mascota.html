@@ -2,4 +2,34 @@
 {% load static %}
 {% block title %}Read Mascota{% endblock %}
 {%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_mascota</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">peso</th>
+                    <th scope="col">edad</th>
+                    <th scope="col">sexo</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">raza</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mascota in mascotas%}
+                <tr>
+                    <th scope="row">{{mascota.id_mascota}}</th>
+                    <td>{{mascota.nomrbre}}</td>
+                    <td>{{mascota.peso}}</td>
+                    <td>{{mascota.edad}}</td>
+                    <td>{{mascota.sexo}}</td>
+                    <td>{{mascota.descripcion}}</td>
+                    <td>{{mascota.raza}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
 {%endblock%}

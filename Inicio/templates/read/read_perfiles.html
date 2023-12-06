@@ -2,4 +2,32 @@
 {% load static %}
 {% block title %}Read Perfiles{% endblock %}
 {%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_perfil</th>
+                    <th scope="col">perfil</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for perfil in perfiles %}
+                <tr>
+                    <th scope="row">{{perfil.id_perfil}}</th>
+                    <td>{{perfil.perfil}}</td>
+                    <td>{{perfil.descripcion}}</td>
+                    {% if perfil.status == 1 %}
+                    <td>Activo</td>
+                    {%else%}
+                    <td>Inactivo</td>
+                    {%endif%}
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
 {%endblock%}

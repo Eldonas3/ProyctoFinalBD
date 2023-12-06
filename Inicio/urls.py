@@ -21,5 +21,6 @@ urlpatterns = [
     path('Read/read_empleado',views.read_empleado),
     path('Read/read_especie',views.read_especie),
     path('Read/read_mascota',views.read_mascota),
-    path('Read/read_perfiles',views.read_raza),
+    path('Read/read_perfiles',views.read_perfiles),
+    path('Read/read_raza',views.read_raza),
 ]
