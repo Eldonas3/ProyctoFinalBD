@@ -1,6 +1,11 @@
+import datetime
 from django.shortcuts import render,redirect
-from .models import Perfiles,Empleado,Mascota,Cliente,Raza,Especie,Adopcion,Cuidado
+from django.http import HttpResponse
+from django.db import connection
+from .models import *
 from .forms import *
+from django.core.management import call_command
+import os
 
 # Create your views here.
 def home(request):
@@ -281,3 +286,104 @@ def update_data_raza(request,id_raza):
         formulario.save()
         return redirect('/Home/Read/read_raza') 
     return render(request,'update/update.html',{'formulario':formulario})
+
+def miscellaneous(request):
+    return render(request,'miscellaneous/miscellaneous.html')
+
+def consults(request):
+    return render(request,'consults/consults.html')
+
+def view_access_credentials(request):
+    with connection.cursor() as cursor:
+        # Ejecutar una consulta SQL direct
+        cursor.execute("SELECT * FROM access_credential")
+        # Obtener los resultados
+        credentials = cursor.fetchall()
+        # la razón de que no imprima los datos es por que es una tupla
+        # debo acceder a ella como una tupla
+        # for credential in credentials:
+        #     print(credential[0])
+    return render(request,'views_db/access_credential.html',{'credentials':credentials})
+
+def view_adoptions_in_process(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM adoptions_in_process")
+        credentials = cursor.fetchall()
+    return render(request,'views_db/adoptions_in_process.html',{'credentials':credentials})
+    
+def view_adoption_acepted(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM adoption_acepted")
+        credentials = cursor.fetchall()
+    return render(request,'views_db/adoption_acepted.html',{'credentials':credentials})
+
+def view_real_name(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM real_name")
+        credentials = cursor.fetchall()
+    return render(request,'views_db/real_name.html',{'credentials':credentials})
+
+def view_cliente_contact(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM cliente_contact")
+        credentials = cursor.fetchall()
+    return render(request,'views_db/cliente_contact.html',{'credentials':credentials})
+
+def consult_one(request):
+    #access_credential
+    credentials = Empleado.objects.select_related('perfil__cliente').values(
+    'nombre_usuario',
+    'contrasena',
+    'correo_electronico',
+    'perfil__cliente__nombre_usuario',
+    'perfil__cliente__contrasena',
+    'perfil__cliente__correo_electronico')
+    return render(request,'consults/consult_one.html',{'credentials':credentials})
+
+def consult_two(request):
+    #adoptions_in_process
+    credentials = Adopcion.objects.filter(status_adopcion=0).values(
+    'id_adopcion',
+    'empleado__nombre_empleado')
+    return render(request,'consults/consult_two.html',{'credentials':credentials})
+
+def consult_three(request):
+    #adoption_acepted
+    credentials = Adopcion.objects.filter(status_adopcion=1).values(
+    'id_adopcion',
+    'empleado__nombre_empleado',
+    'cliente__nombre_cliente',
+    'mascota__nombre')
+    return render(request,'consults/consult_three.html',{'credentials':credentials})
+
+def consult_four(request):
+    #real_name
+    credentials = Adopcion.objects.select_related('cliente').values(
+    'id_adopcion',
+    'cliente__nombre_cliente',
+    'cliente__apellido_materno',
+    'cliente__apellido_paterno')
+    return render(request,'consults/consult_four.html',{'credentials':credentials})
+
+def consult_five(request):
+    #cliente_contact
+    credentials = Adopcion.objects.filter(status_adopcion=0).select_related('cliente').values(
+    'cliente__nombre_cliente',
+    'cliente__telefono',
+    'cliente__correo_electronico',
+    'status_adopcion')
+    return render(request,'consults/consult_five.html',{'credentials':credentials})
+
+def descargar_respaldo(request):
+    # Ruta al archivo que deseas descargar (ajusta esto según tu caso)
+    current_datetime = datetime.datetime.now()
+    timestamp = current_datetime.strftime('%Y-%m-%d_%H-%M-%S')
+
+    filename = f'backups/db_{timestamp}.json'
+
+    call_command('dumpdata', output=filename, format='json',indent=2)
+
+    with open(filename, 'rb') as file:
+        response = HttpResponse(file.read(), content_type='application/json')
+        response['Content-Disposition'] = f'attachment; filename="backups/db_{timestamp}.json"'
+    return response

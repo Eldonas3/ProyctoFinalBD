@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}View real_name{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_adopcion</th>
+                    <th scope="col">nombre_cliente</th>
+                    <th scope="col">apellido_materno</th>
+                    <th scope="col">apellido_paterno</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for credential in credentials %}
+                <tr>
+                    <!-- Nota: para acceder a los elemnetos de una tupla no 
+                    usas [] usas un .  -->
+                    <th scope="row">{{credential.id_adopcion}}</th>
+                    <td>{{credential.cliente__nombre_cliente}}</td>
+                    <td>{{credential.cliente__apellido_materno}}</td>
+                    <td>{{credential.cliente__apellido_paterno}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

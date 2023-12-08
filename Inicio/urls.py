@@ -55,4 +55,18 @@ urlpatterns = [
     path('Update/update_mascota/<int:id_mascota>',views.update_data_mascota,name='update_mascota'),
     path('Update/update_perfiles/<int:id_perfil>',views.update_data_perfiles,name='update_perfil'),
     path('Update/update_raza/<int:id_raza>',views.update_data_raza,name='update_raza'),
+    path('Miscellaneous/',views.miscellaneous),
+    path('Consults/',views.consults),
+    path('Miscellaneous/view_access_credential',views.view_access_credentials),
+    path('Miscellaneous/view_adoptions_in_process',views.view_adoptions_in_process),
+    path('Miscellaneous/view_adoption_acepted',views.view_adoption_acepted),
+    path('Miscellaneous/view_real_name',views.view_real_name),
+    path('Miscellaneous/view_cliente_contact',views.view_cliente_contact),
+    path('Consults/consult_one',views.consult_one),
+    path('Consults/consult_two',views.consult_two),
+    path('Consults/consult_three',views.consult_three),
+    path('Consults/consult_four',views.consult_four),
+    path('Consults/consult_five',views.consult_five),
+    path('backup´/',views.descargar_respaldo,name='download'),
+
 ]

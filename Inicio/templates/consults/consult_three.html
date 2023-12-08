@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}View adoption_acepted{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id_adopcion</th>
+                    <th scope="col">nombre_empleado</th>
+                    <th scope="col">nombre_cliente</th>
+                    <th scope="col">nombre_mascota</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for credential in credentials %}
+                <tr>
+                    <!-- Nota: para acceder a los elemnetos de una tupla no 
+                    usas [] usas un .  -->
+                    <th scope="row">{{credential.id_adopcion}}</th>
+                    <td>{{credential.empleado__nombre_empleado}}</td>
+                    <td>{{credential.cliente__nombre_cliente}}</td>
+                    <td>{{credential.mascota__nombre}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Consult One{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Empleado usuario</th>
+                    <th scope="col">Empleado Contraseña</th>
+                    <th scope="col">Correo Empleado</th>
+                    <th scope="col">cliente_nombre_usuario</th>
+                    <th scope="col">cliente_contrasena</th>
+                    <th scope="col">cliente_correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for credential in credentials %}
+                <tr>
+                    <!-- Nota: para acceder a los elemnetos de una tupla no 
+                    usas [] usas un .  -->
+                    <th scope="row">{{credential.nombre_usuario}}</th>
+                    <td>{{credential.contrasena}}</td>
+                    <td>{{credential.correo_electronico}}</td>
+                    <td>{{credential.perfil__cliente__nombre_usuario}}</td>
+                    <td>{{credential.perfil__cliente__contrasena}}</td>
+                    <td>{{credential.perfil__cliente__correo_electronico}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

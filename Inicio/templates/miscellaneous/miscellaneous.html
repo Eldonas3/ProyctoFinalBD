@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <title>Miscellaneous</title>
         <!-- Enlace a Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -122,11 +122,11 @@
             <div class="row gy-5">
                 <div>
                     <h5>
-                        {% block actionName%}{% endblock %}
+                        Views, Views, Views !!!
                     </h5>
                     <div class="spacer"></div>
                     <h5>
-                        {% block text%}{% endblock %}
+                        Because a normal consult is so boring
                     </h5>
                 </div>
         
@@ -135,12 +135,12 @@
                     <!-- Enlace a la primer tabla -->
                     <div class="card">
                         <div class="card-header">
-                          Cliente
+                            access_credential
                         </div>
                         <div class="card-body">
-                          <h4 class="card-title">"Cliente" Table</h4>
-                          <p class="card-text">{% block tc1 %}{% endblock%}</p>
-                          {% block href %}{%endblock%}{% block btn1 %}{%endblock%}</a>
+                          <h4 class="card-title">"access_credential" View</h4>
+                          <p class="card-text">Lets consult some secret credentials</p>
+                          <a href="/Home/Miscellaneous/view_access_credential" class="btn btn-primary">View</a>
                         </div>
                       </div>
                     <!-- Fin -->
@@ -152,12 +152,12 @@
                     <!-- Enlace a la primer tabla -->
                     <div class="card">
                         <div class="card-header">
-                          Empleado
+                            adoptions_in_process
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">"Empleado" Table</h4>
-                          <p class="card-text">{% block tc2 %}{% endblock%}</p>
-                          {% block href2 %}{%endblock%}{% block btn2 %}{%endblock%}</a>
+                            <h4 class="card-title">"adoptions_in_process" View</h4>
+                          <p class="card-text">Why my adoption was rejected?</p>
+                          <a href="/Home/Miscellaneous/view_adoptions_in_process" class="btn btn-primary">View</a>
                         </div>
                       </div>
                     <!-- Fin -->
@@ -169,12 +169,12 @@
                     <!-- Enlace a la primer tabla -->
                     <div class="card">
                         <div class="card-header">
-                          Mascota
+                            adoption_acepted
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">"Mascota" Table</h4>
-                          <p class="card-text">{% block tc3 %}{% endblock%}</p>
-                          {% block href3 %}{%endblock%}{% block btn3 %}{%endblock%}</a>
+                            <h4 class="card-title">"adoption_acepted" View</h4>
+                          <p class="card-text">Finally the burocracy works</p>
+                          <a href="/Home/Miscellaneous/view_adoption_acepted" class="btn btn-primary">View</a>
                         </div>
                       </div>
                     <!-- Fin -->
@@ -186,12 +186,12 @@
                     <!-- Enlace a la primer tabla -->
                     <div class="card">
                         <div class="card-header">
-                          Perfiles
+                            real_name
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">"Perfiles" Table</h4>
-                          <p class="card-text">{% block tc4 %}{% endblock%}</p>
-                          {% block href4 %}{%endblock%}{% block btn4 %}{%endblock%}</a>
+                            <h4 class="card-title">"real_name" View</h4>
+                          <p class="card-text">Who am I? and why is my name here?</p>
+                          <a href="/Home/Miscellaneous/view_real_name" class="btn btn-primary">View</a>
                         </div>
                       </div>
                     <!-- Fin -->
@@ -203,66 +203,41 @@
                     <!-- Enlace a la primer tabla -->
                     <div class="card">
                         <div class="card-header">
-                          Adopcion
+                            cliente_contact
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">"Adopcion" Table</h4>
-                          <p class="card-text">{% block tc5 %}{% endblock%}</p>
-                          {% block href5 %}{%endblock%}{% block btn5 %}{%endblock%}</a>
+                            <h4 class="card-title">"cliente_contact" View</h4>
+                          <p class="card-text">I know where you live</p>
+                          <a href="/Home/Miscellaneous/view_cliente_contact" class="btn btn-primary">View</a>
+                        </div>
+                      </div>
+                    <!-- Fin -->
+                </div>
+              </div>
+
+              <h5>
+                you can backup the db too
+            </h5>
+
+              <div class="col-6">
+                <div class="p-3">
+                    <!-- Enlace a la primer tabla -->
+                    <div class="card">
+                        <div class="card-header">
+                            DB Backup
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">DB Backup</h4>
+                          <p class="card-text">trust me you will need it</p>
+                          <form action="{% url 'download' %}" method="get">
+                            <button type="submit" class="btn btn-primary">Backup</button>
+                        </form>
                         </div>
                       </div>
                     <!-- Fin -->
                 </div>
               </div>
         
-              <div class="col-6">
-                <div class="p-3">
-                    <!-- Enlace a la primer tabla -->
-                    <div class="card">
-                        <div class="card-header">
-                          Raza
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">"Raza" Table</h4>
-                          <p class="card-text">{% block tc6 %}{% endblock%}</p>
-                          {% block href6 %}{%endblock%}{% block btn6 %}{%endblock%}</a>
-                        </div>
-                      </div>
-                    <!-- Fin -->
-                </div>
-              </div>
-        
-              <div class="col-6">
-                <div class="p-3">
-                    <!-- Enlace a la primer tabla -->
-                    <div class="card">
-                        <div class="card-header">
-                          Especie
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">"Especie" Table</h4>
-                          <p class="card-text">{% block tc7 %}{% endblock%}</p>
-                          {% block href7 %}{%endblock%}{% block btn7 %}{%endblock%}</a>
-                        </div>
-                      </div>
-                    <!-- Fin -->
-                </div>
-              </div>
-        
-              <div class="col-6">
-                <div class="p-3">
-                    <!-- Enlace a la primer tabla -->
-                    <div class="card">
-                        <div class="card-header">
-                          Cuidado
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">"Cuidado" Table</h4>
-                          <p class="card-text">{% block tc8 %}{% endblock%}</p>
-                          {% block href8 %}{%endblock%}{% block btn8 %}{%endblock%}</a>
-                        </div>
-                      </div>
-                    <!-- Fin -->
                 </div>
               </div>
             </div>

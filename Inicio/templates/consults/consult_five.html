@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}View cliente_contact{% endblock %}
+{%block content%}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">nombre_cliente</th>
+                    <th scope="col">telefono</th>
+                    <th scope="col">correo_electronico</th>
+                    <th scope="col">status_adopcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for credential in credentials %}
+                <tr>
+                    <!-- Nota: para acceder a los elemnetos de una tupla no 
+                    usas [] usas un .  -->
+                    <th scope="row">{{credential.cliente__nombre_cliente}}</th>
+                    <td>{{credential.cliente__telefono}}</td>
+                    <td>{{credential.cliente__correo_electronico}}</td>
+                    <td>{{credential.status_adopcion}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}
