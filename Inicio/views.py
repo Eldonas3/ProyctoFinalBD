@@ -5,7 +5,7 @@ from django.db import connection
 from .models import *
 from .forms import *
 from django.core.management import call_command
-import os
+# import os
 
 # Create your views here.
 def home(request):
